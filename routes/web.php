@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(PageController::class)->group(function(){
+    Route::get('/', 'index');
+    Route::get('/game/{id}/detail', 'detail');
+    Route::get('/game/{id}/checkout/{credit_id}', 'checkout');
+    Route::post('/game/checkout', 'checkout_now');
+    Route::get('/trx/{txid}/detail', 'checkout_detail');
 });
 
 Auth::routes();
