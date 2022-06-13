@@ -12,6 +12,6 @@ class GameType extends Model
     protected $fillable = ['name'];
 
     public function game(){
-        return $this->hasMany(Game::class, 'id', 'game_type_id');
+        return $this->hasMany(Game::class, 'game_type_id', 'id');
     }
 }
