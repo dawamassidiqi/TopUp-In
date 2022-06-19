@@ -15,10 +15,12 @@ class Transaction extends Model
         'credit_id',
         'order_date',
         'IDGameApp',
-        'commets',
+        'comments',
         'total',
         'status',
     ];
+
+    public $incrementing = false;
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');

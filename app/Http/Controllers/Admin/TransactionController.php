@@ -75,6 +75,7 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd('OK-'.$id);
         Transaction::where('id', $id)->update([
             'user_id' => auth()->user()->id,
             'status' => 'paid',

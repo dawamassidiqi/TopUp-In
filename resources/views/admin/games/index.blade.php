@@ -44,6 +44,7 @@
                   <th>Game Name</th>
                   <th>Genre</th>
                   <th>Type</th>
+                  <th>Gambar</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -54,6 +55,13 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->genre->name }}</td>
                     <td>{{ $item->game_type->name }}</td>
+                    <td>
+                      @if ($item->photo == null)
+                        NULL
+                      @else 
+                        <a href="{{ asset('storage/'.$item->photo) }}" target="_blank" class="btn btn-warning btn-sm text-white">lihat</a>
+                      @endif
+                    </td>
                     <td>
                       <form action="/admin/game/{{ $item->id }}" method="POST" onsubmit="return confirm('Apakah anda yakin akan mengahpus data?')">
                         @csrf
