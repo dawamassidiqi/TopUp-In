@@ -27,8 +27,11 @@
       <div class="card">
         <div class="card-body">
           <center class="mt-4">
-            <img src="{{ asset('assets/images/users/5.jpg') }}" class="img-circle"
-              width="150" />
+            @if (Auth::user()->photo == null)  
+              <img src="{{ asset('assets/images/users/1.jpg') }}" class="img-circle" width="150" />
+            @else
+              <img src="{{ asset('storage/'.Auth::user()->photo) }}" class="img-circle" width="150" />
+            @endif
             <h4 class="card-title mt-2">{{ Auth::user()->name }}</h4>
             <h6 class="card-subtitle">Accoubts Type {{ Auth::user()->role->role }}</h6>
             <div class="row text-center justify-content-md-center">
